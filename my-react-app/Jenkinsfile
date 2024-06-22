@@ -1,8 +1,58 @@
+// pipeline {
+//     agent any
+
+//     environment {
+//         DOCKER_IMAGE = 'blood-bank-front'
+//     }
+
+//     stages {
+//         stage('Checkout') {
+//             steps {
+//                 // Checkout the Git repository
+//                 git 'https://github.com/Harintharan/Blood_bank_front.git'
+//             }
+//         }
+
+//         stage('Build Docker Image') {
+//             steps {
+//                 script {
+//                     // Build Docker image with a tag based on Jenkins build number
+//                     docker.build("${DOCKER_IMAGE}:${env.BUILD_NUMBER}")
+//                 }
+//             }
+//         }
+
+//         stage('Run Docker Container') {
+//             steps {
+//                 script {
+//                     // Stop and remove any existing container with the same name
+//                     def existingContainer = docker.container('blood-bank-container')
+//                     if (existingContainer) {
+//                         existingContainer.stop()
+//                         existingContainer.remove()
+//                     }
+//                     // Run Docker container from the built image
+//                     docker.image("${DOCKER_IMAGE}:${env.BUILD_NUMBER}").run('-d -p 8080:80 --name blood-bank-container')
+//                 }
+//             }
+//         }
+//     }
+
+//     post {
+//         success {
+//             echo 'Pipeline succeeded! Application is deployed.'
+//         }
+//         failure {
+//             echo 'Pipeline failed! Application deployment failed.'
+//         }
+//     }
+// }
 pipeline {
     agent any
 
     environment {
         DOCKER_IMAGE = 'blood-bank-front'
+        CONTAINER_NAME = 'blood-bank-container'
     }
 
     stages {
@@ -26,13 +76,14 @@ pipeline {
             steps {
                 script {
                     // Stop and remove any existing container with the same name
-                    def existingContainer = docker.container('blood-bank-container')
+                    def existingContainer = docker.container(CONTAINER_NAME)
                     if (existingContainer) {
                         existingContainer.stop()
                         existingContainer.remove()
                     }
                     // Run Docker container from the built image
-                    docker.image("${DOCKER_IMAGE}:${env.BUILD_NUMBER}").run('-d -p 8080:80 --name blood-bank-container')
+                    docker.image("${DOCKER_IMAGE}:${env.BUILD_NUMBER}")
+                          .run('-d', '-p', '8080:80', '--name', CONTAINER_NAME)
                 }
             }
         }
@@ -41,9 +92,11 @@ pipeline {
     post {
         success {
             echo 'Pipeline succeeded! Application is deployed.'
+            // Additional success actions if needed
         }
         failure {
             echo 'Pipeline failed! Application deployment failed.'
+            // Additional failure actions if needed
         }
     }
 }

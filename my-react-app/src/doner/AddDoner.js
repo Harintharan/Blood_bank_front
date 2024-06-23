@@ -42,7 +42,7 @@ export default function AddDoner() {
   }, []);
   const loaddoners = async () => {
     const result = await axios.get(
-      `http://localhost:8080/doners`
+      `http://localhost:8081/doners`
     );
     setalldoners(result.data);
   };
@@ -70,7 +70,7 @@ export default function AddDoner() {
         submit = false;
       }
       if (submit) {
-        await axios.post("http://localhost:8080/doner", doner);
+        await axios.post("http://localhost:8081/doner", doner);
         alert("created doner");
         navigate("/donerview");
       } else {
@@ -89,7 +89,7 @@ export default function AddDoner() {
      /*-------------------*/
 
 
-    // await axios.post("http://localhost:8080/doner",doner)
+    // await axios.post("http://localhost:8081/doner",doner)
     // navigate("/donerview")
 
   }

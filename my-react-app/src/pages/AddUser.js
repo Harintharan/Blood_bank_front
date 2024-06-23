@@ -34,7 +34,7 @@ export default function AddDoner() {
   }, []);
   const loadusers = async () => {
     const result = await axios.get(
-      `http://localhost:8080/users`
+      `http://localhost:8081/users`
     );
     setallusers(result.data);
   };
@@ -62,7 +62,7 @@ export default function AddDoner() {
         submit = false;
       }
       if (submit) {
-        await axios.post("http://localhost:8080/user", user);
+        await axios.post("http://localhost:8081/user", user);
         alert("created user");
         navigate("/admin");
       } else {

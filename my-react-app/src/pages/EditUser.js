@@ -36,7 +36,7 @@ export default function EditUser() {
   }, []);
   const loadusers = async () => {
     const result = await axios.get(
-      `http://localhost:8080/users`
+      `http://localhost:8081/users`
     );
     setallusers(result.data);
   };
@@ -55,7 +55,7 @@ export default function EditUser() {
             allusers.username !== user.username ))
 
         
-        { await axios.put(`http://localhost:8080/user/${id}`,user)
+        { await axios.put(`http://localhost:8081/user/${id}`,user)
         navigate("/admin")
            
         }
@@ -80,7 +80,7 @@ export default function EditUser() {
 
 
   const loadUser =async()=>{
-    const result=await axios.get(`http://localhost:8080/user/${id}`)
+    const result=await axios.get(`http://localhost:8081/user/${id}`)
 
     setUser(result.data)
   }

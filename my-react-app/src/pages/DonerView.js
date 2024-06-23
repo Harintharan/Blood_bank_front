@@ -20,7 +20,7 @@
 //     },[]);
 
 //     const loadDoners=async()=>{
-//         const result = await axios.get("http://localhost:8080/doners")
+//         const result = await axios.get("http://localhost:8081/doners")
 //         setdoners(result.data);
 
 //     }
@@ -31,7 +31,7 @@
 //       const confirmDelete = window.confirm('!!!!!! Are you sure to permenently delete the record? !!!!!!!');
 
 //       if (confirmDelete) {
-//         await axios.delete(`http://localhost:8080/doner/${id}`);
+//         await axios.delete(`http://localhost:8081/doner/${id}`);
 //         loadDoners();
 //       }
 
@@ -132,7 +132,7 @@
 //   }, []);
 
 //   const loadDoners = async () => {
-//     const result = await axios.get('http://localhost:8080/doners');
+//     const result = await axios.get('http://localhost:8081/doners');
 //     setDoners(result.data);
 //     setFilteredDoners(result.data);
 //   };
@@ -140,7 +140,7 @@
 //   const deleteDoner = async (id) => {
 //     const confirmDelete = window.confirm('Are you sure to permanently delete the record?');
 //     if (confirmDelete) {
-//       await axios.delete(`http://localhost:8080/doner/${id}`);
+//       await axios.delete(`http://localhost:8081/doner/${id}`);
 //       loadDoners();
 //     }
 //   };
@@ -235,7 +235,7 @@
 //   }, []);
 
 //   const loadDoners = async () => {
-//     const result = await axios.get('http://localhost:8080/doners');
+//     const result = await axios.get('http://localhost:8081/doners');
 //     setDoners(result.data);
 //     setFilteredDoners(result.data);
 //   };
@@ -243,7 +243,7 @@
 //   const deleteDoner = async (id) => {
 //     const confirmDelete = window.confirm('Are you sure to permanently delete the record?');
 //     if (confirmDelete) {
-//       await axios.delete(`http://localhost:8080/doner/${id}`);
+//       await axios.delete(`http://localhost:8081/doner/${id}`);
 //       loadDoners();
 //     }
 //   };
@@ -345,7 +345,7 @@ export default function DonerView() {
   }, []);
 
   const loadDoners = async () => {
-    const result = await axios.get('http://localhost:8080/doners');
+    const result = await axios.get('http://localhost:8081/doners');
     setDoners(result.data);
     setFilteredDoners(result.data);
   };
@@ -353,7 +353,7 @@ export default function DonerView() {
   const deleteDoner = async (id) => {
     const confirmDelete = window.confirm('Are you sure to permanently delete the record?');
     if (confirmDelete) {
-      await axios.delete(`http://localhost:8080/doner/${id}`);
+      await axios.delete(`http://localhost:8081/doner/${id}`);
       loadDoners();
     }
   };

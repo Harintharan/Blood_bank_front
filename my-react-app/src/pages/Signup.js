@@ -43,7 +43,7 @@ export default function Signup() {
   }, []);
   const loadusers = async () => {
     const result = await axios.get(
-      `http://localhost:8080/users`
+      `http://localhost:8081/users`
     );
     setallusers(result.data);
   };
@@ -73,7 +73,7 @@ export default function Signup() {
           submit = false;
         }
         if (submit) {
-          await axios.post("http://localhost:8080/user", user);
+          await axios.post("http://localhost:8081/user", user);
           alert("created");
           navigate("/login");
         } else {
@@ -89,7 +89,7 @@ export default function Signup() {
 
 
 
-  //  await axios.post("http://localhost:8080/user",user);
+  //  await axios.post("http://localhost:8081/user",user);
   // navigate("/login");
   // alert("created");
    

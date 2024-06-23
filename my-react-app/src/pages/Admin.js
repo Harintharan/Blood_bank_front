@@ -21,7 +21,7 @@
 //     },[]);
 
 //     const loadUsers=async()=>{
-//         const result = await axios.get("http://localhost:8080/users")
+//         const result = await axios.get("http://localhost:8081/users")
 //         setusers(result.data);
 
 //     }
@@ -32,14 +32,14 @@
 //       const confirmDelete = window.confirm('!!!!!! Are you sure to permenently delete the record? !!!!!!!');
 
 //       if (confirmDelete) {
-//         await axios.delete(`http://localhost:8080/user/${id}`);
+//         await axios.delete(`http://localhost:8081/user/${id}`);
 //         loadUsers();
 //       }
 
 
     
       
-//       // await axios.delete( `http://localhost:8080/user/${id}`)
+//       // await axios.delete( `http://localhost:8081/user/${id}`)
 
 //       // loadDoners()
 //     }
@@ -128,7 +128,7 @@ export default function Admin() {
   }, []);
 
   const loadUsers = async () => {
-    const result = await axios.get("http://localhost:8080/users");
+    const result = await axios.get("http://localhost:8081/users");
     const filteredUsers = result.data.filter(user => user.username.toLowerCase().includes(searchUsername.toLowerCase())); 
     setUsers(filteredUsers);
   }
@@ -136,7 +136,7 @@ export default function Admin() {
   const deleteUser = async (id) => {
     const confirmDelete = window.confirm('Are you sure to permanently delete the record?');
     if (confirmDelete) {
-      await axios.delete(`http://localhost:8080/user/${id}`);
+      await axios.delete(`http://localhost:8081/user/${id}`);
       loadUsers();
     }
   }

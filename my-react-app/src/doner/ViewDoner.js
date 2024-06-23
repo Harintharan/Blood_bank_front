@@ -29,7 +29,7 @@ export default function ViewDoner() {
     },[])
 
     const loadDoner=async()=>{
-        const result=await axios.get(`http://localhost:8080/doner/${id}`)
+        const result=await axios.get(`http://localhost:8081/doner/${id}`)
         setDoner(result.data)
     }
 

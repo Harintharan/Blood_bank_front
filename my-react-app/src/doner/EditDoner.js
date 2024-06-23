@@ -43,14 +43,14 @@ export default function EditDoner() {
 
   const onSubmit=async (e)=>{
     e.preventDefault();
-    await axios.put(`http://localhost:8080/doner/${id}`,doner)
+    await axios.put(`http://localhost:8081/doner/${id}`,doner)
     navigate("/donerview")
 
   }
 
 
   const loadDoner =async()=>{
-    const result=await axios.get(`http://localhost:8080/doner/${id}`)
+    const result=await axios.get(`http://localhost:8081/doner/${id}`)
 
     setDoner(result.data)
   }

@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+      MYSQL_DATABASE: BloodBank
+      MYSQL_ROOT_PASSWORD: HA1256ri#
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "--silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  spring_app:
+    image: spring-app
+    container_name: spring_app
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/BloodBank
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: HA1256ri#
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+  react_app:
+    build:
+      context: .
+    container_name: react_app
+    ports:
+      - "3000:80"
+    depends_on:
+      - spring_app
+
+volumes:
+  mysql-data:
+networks:
+  default:
+    driver: bridge

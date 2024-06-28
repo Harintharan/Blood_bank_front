@@ -25,7 +25,7 @@ export default function Navbar() {
    
     <Link className="btn btn-outline-light btn-lg" to= "/addDoner" >ADD DONER</Link>
     <Link className="btn btn-outline-light " to="/login"> LOG OUT</Link>
-    <Link className="btn btn-outline-light" to="/">HOME</Link>
+    <Link className="btn btn-outline-light" to="/">HOM</Link>
     
   </div>
 </nav>

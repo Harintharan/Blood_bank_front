@@ -17,7 +17,7 @@ export default function Home() {
 
         <h1 className="stylish-text">Give Blood Save Life</h1>
         <Link type="button" className="outline-button" to="/login">
-            GET START4
+            GET START4355
           </Link>
   
 
